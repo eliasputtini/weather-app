@@ -10,9 +10,10 @@ import {
   StyledInput,
   StyledButton,
   FormContainer,
+  Text,
+  Title,
+  LogoView,
 } from './styles';
-
-import {Text} from 'react-native-elements';
 
 export function Auth({navigation}) {
   const [email, setEmail] = useState('');
@@ -45,16 +46,25 @@ export function Auth({navigation}) {
 
   return (
     <Background>
-      <Text h3>Weather</Text>
-      <LottieView
-        autoPlay
-        loop={true}
-        speed={1.7}
-        source={require('../../assets/animations/cloud.json')}
-        style={{width: 300, height: 140}}
-      />
+      <LogoView>
+        <Title>Weather</Title>
+        <LottieView
+          autoPlay
+          loop={true}
+          speed={1.7}
+          source={require('../../assets/animations/cloud.json')}
+          style={{
+            width: 360,
+            height: 200,
+            left: 20,
+            top: 10,
+            position: 'absolute',
+          }}
+        />
+      </LogoView>
+
       <FormContainer>
-        <Text h4>Login ou Cadastro:</Text>
+        <Text>Login ou Cadastro:</Text>
         <InputContainer>
           <StyledInput
             onChangeText={setEmail}

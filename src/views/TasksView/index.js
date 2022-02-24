@@ -1,10 +1,9 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
 
 import {Dimensions} from 'react-native';
 
 import {useTasks} from '../../providers/TasksProvider';
 import {CarouselItem} from '../../components/CarouselItem';
-import {AddTask} from '../../components/AddTask';
 
 import Carousel from 'react-native-snap-carousel';
 
@@ -19,15 +18,21 @@ import {
 
 import {searchCityWeather} from '../../services/api';
 
-export function TasksView({navigation, route}) {
+export function TasksView() {
   const [searchText, setSearchText] = useState('');
   const {tasks, createTask} = useTasks();
 
   const searchWeather = () => {
     searchCityWeather(searchText).then(response => {
+      console.log('x');
       let {data} = response;
 
-      createTask(data.name, data.main.temp);
+      createTask(
+        data.name,
+        data.main.temp,
+        data.weather[0].main,
+        data.weather[0].description,
+      );
     });
   };
 

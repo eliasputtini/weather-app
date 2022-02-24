@@ -13,11 +13,15 @@ class Weather {
     status = Weather.STATUS_OPEN,
     id = new ObjectId(),
     temp,
+    main,
+    description,
   }) {
     this._partition = partition;
     this._id = id;
     this.name = name;
     this.temp = temp;
+    this.main = main;
+    this.description = description;
   }
 
   static STATUS_OPEN = 'Aberto';
@@ -30,6 +34,8 @@ class Weather {
       _partition: 'string?',
       name: 'string',
       temp: 'double?',
+      main: 'string',
+      description: 'string',
     },
     primaryKey: '_id',
   };

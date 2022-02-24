@@ -45,7 +45,7 @@ const TasksProvider = ({children, projectPartition}) => {
     };
   }, [user, projectPartition]);
 
-  const createTask = (newTaskName, temperature) => {
+  const createTask = (newTaskName, temperature, main, description) => {
     const projectRealm = realmRef.current;
     projectRealm.write(() => {
       projectRealm.create(
@@ -54,6 +54,8 @@ const TasksProvider = ({children, projectPartition}) => {
           name: newTaskName || 'New Task',
           partition: projectPartition || 'New Task',
           temp: temperature || 0,
+          main: main || '0',
+          description: description || '0',
         }),
       );
     });

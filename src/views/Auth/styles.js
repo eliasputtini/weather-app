@@ -13,8 +13,13 @@ export const Background = styled(LinearGradient).attrs({
 })`
   display: flex;
   height: 100%;
-  justify-content: space-around
+  justify-content: space-evenly;
   align-items: center;
+`;
+
+export const LogoView = styled.View`
+  width: 60%;
+  align-items: flex-start;
 `;
 
 export const InputContainer = styled.View`
@@ -32,7 +37,7 @@ export const ButtonContainer = styled.View`
 `;
 export const FormContainer = styled.View`
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
 `;
 
 export const StyledInput = styled.TextInput`
@@ -43,6 +48,17 @@ export const StyledInput = styled.TextInput`
   border-bottom-width: 0;
   padding: 15px;
   color: black;
+`;
+
+export const Text = styled.Text`
+  color: black;
+  font-size: 25px;
+`;
+
+export const Title = styled.Text`
+  color: #001219;
+  font-size: 45px;
+  font-family: 'RockSalt-Regular';
 `;
 
 export const StyledButton = styled(Button).attrs(props => ({

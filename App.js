@@ -9,6 +9,7 @@ import {TasksProvider} from './src/providers/TasksProvider';
 import {Auth} from './src/views/Auth';
 import {ProjectsView} from './src/views/ProjectView';
 import {TasksView} from './src/views/TasksView';
+import {Details} from './src/views/Details';
 
 import {Logout} from './src/components/Logout';
 
@@ -46,6 +47,13 @@ const App = () => {
               );
             }}
           </Stack.Screen>
+          <Stack.Screen
+            name="Details"
+            component={Details}
+            options={{
+              title: `Detalhes`,
+            }}
+          />
         </Stack.Navigator>
       </NavigationContainer>
     </AuthProvider>

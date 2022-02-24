@@ -2,7 +2,7 @@ import styled from 'styled-components/native';
 import LinearGradient from 'react-native-linear-gradient';
 
 export const CarouselContainer = styled.View`
-  padding-top: 250px;
+  margin-top: 50px;
 `;
 
 export const Background = styled(LinearGradient).attrs({
@@ -13,11 +13,10 @@ export const Background = styled(LinearGradient).attrs({
   angle: 45,
   angleCenter: {x: 0.5, y: 0.5},
 })`
-  display: flex;
-  height: 100%;
-  justify-content: space-around
+  flex: 1;
+  justify-content: flex-start;
   align-items: center;
-  padding-vertical:30px;
+  padding-vertical: 30px;
 `;
 
 export const SearchLocationContainer = styled.View`

@@ -26,7 +26,7 @@ export function ProjectsView({navigation}) {
         />
         <StyledButton
           onPress={() => onClickProject(projectData)}
-          title="Administrar dados da fazenda"
+          title="Bem-vindo"
         />
       </View>
     </Background>
