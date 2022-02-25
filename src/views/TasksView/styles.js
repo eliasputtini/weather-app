@@ -6,7 +6,7 @@ export const CarouselContainer = styled.View`
 `;
 
 export const Background = styled(LinearGradient).attrs({
-  colors: ['#48CAE4', '#caf0f8'],
+  colors: ['#0077B6', '#caf0f8'],
   start: {x: 1, y: 0},
   end: {x: 0, y: 1},
   useAngle: true,

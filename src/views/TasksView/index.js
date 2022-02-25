@@ -5,6 +5,7 @@ import {Dimensions} from 'react-native';
 import {useTasks} from '../../providers/TasksProvider';
 import {CarouselItem} from '../../components/CarouselItem';
 
+import LottieView from 'lottie-react-native';
 import Carousel from 'react-native-snap-carousel';
 
 import {CarouselContainer} from './styles';
@@ -61,16 +62,26 @@ export function TasksView() {
       </SearchLocationContainer>
 
       <CarouselContainer>
-        <Carousel
-          data={tasks}
-          enableSnap={false}
-          layout={'default'}
-          itemWidth={300}
-          renderItem={info => (
-            <CarouselItem key={`${info.item._id}`} cityWeather={info.item} />
-          )}
-          sliderWidth={Dimensions.get('screen').width}
-        />
+        {tasks.lenght > 1 ? (
+          <Carousel
+            data={tasks}
+            enableSnap={false}
+            layout={'default'}
+            itemWidth={300}
+            renderItem={info => (
+              <CarouselItem key={`${info.item._id}`} cityWeather={info.item} />
+            )}
+            sliderWidth={Dimensions.get('screen').width}
+          />
+        ) : (
+          <LottieView
+            autoPlay
+            loop={true}
+            speed={1.7}
+            source={require('../../assets/animations/load.json')}
+            style={{width: 200, height: 300}}
+          />
+        )}
       </CarouselContainer>
     </Background>
   );

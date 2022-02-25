@@ -2,9 +2,10 @@ import styled from 'styled-components/native';
 
 export const InfoContainer = styled.TouchableOpacity`
   width: 100%;
-  background-color: #48cae4;
+  background-color: #00b4d8;
   border-radius: 5px;
   padding: 50px;
+  height: 480px;
   margin-left: 25px;
   margin-right: 25px;
 `;

@@ -1,7 +1,12 @@
 import React from 'react';
 import moment from 'moment';
 
-import {Container, WeatherBlock, WeatherInfoText} from './styles';
+import {
+  Container,
+  WeatherBlock,
+  WeatherInfoText,
+  WeatherInfoTemp,
+} from './styles';
 import LottieView from 'lottie-react-native';
 
 const images = {
@@ -14,21 +19,24 @@ const images = {
 
 export default function WeatherInfo({data}) {
   const formatDateWeatherReceived = () => {
-    return moment(data.dt_txt).format('HH:mm');
+    return moment.unix(data.dt).format('DD/MM/YYYY, HH:mm');
   };
+  console.log(data);
 
   return (
     <Container>
       <WeatherBlock>
-        <WeatherInfoText>{~~data.main.temp}°</WeatherInfoText>
         <LottieView
           autoPlay
           loop={true}
           speed={1.7}
-          source={images[data.main]}
-          style={{width: 200, height: 200, marginBottom: 50}}
+          source={images[data.weather[0].main]}
+          style={{width: 200, height: 200}}
         />
-        <WeatherInfoText>{formatDateWeatherReceived()}</WeatherInfoText>
+        <Container>
+          <WeatherInfoTemp>{~~data.temp.day}°</WeatherInfoTemp>
+          <WeatherInfoText>{formatDateWeatherReceived()}</WeatherInfoText>
+        </Container>
       </WeatherBlock>
     </Container>
   );

@@ -1,25 +1,26 @@
 import React, {useEffect, useState} from 'react';
-import {View} from 'react-native';
-import {Text} from 'react-native-elements';
-import {Background, WeatherFlatList} from './styles';
-import LottieView from 'lottie-react-native';
-import {searchCityWeatherWeek} from '../../services/api';
+import {Background} from './styles';
+import {searchCityWeatherWeek, searchCity} from '../../services/api';
 
-import {WheaterInfo} from './components/WheaterInfo';
+import WeatherList from './components/WeatherList';
 
 export function Details({route}) {
   const [weatherData, setWeatherData] = useState('');
 
   const searchWeatherWeek = () => {
-    searchCityWeatherWeek(route.params.city).then(response => {
-      console.log('x');
-      const {data} = response;
-      let weatherResponse = {};
+    searchCity(route.params.city).then(response => {
+      searchCityWeatherWeek(response.data[0].lat, response.data[0].lon).then(
+        response2 => {
+          const {data} = response2;
+          let weatherResponse = {};
+          console.log(data);
 
-      weatherResponse['latestWeather'] = data.list[0];
-      weatherResponse['dayWeather'] = data.list.splice(1, 5);
-      weatherResponse['cityName'] = data.city.name;
-      setWeatherData(weatherResponse);
+          weatherResponse['dayWeather'] = data.daily;
+          weatherResponse['cityName'] = response.data[0].name;
+          setWeatherData(weatherResponse);
+          console.log(weatherResponse);
+        },
+      );
     });
   };
   useEffect(() => {
@@ -28,24 +29,7 @@ export function Details({route}) {
 
   return (
     <Background>
-      <View>
-        <LottieView
-          autoPlay
-          loop={true}
-          speed={1.7}
-          source={require('../../assets/animations/cow.json')}
-          style={{width: 300, height: 140, left: 30, bottom: 30}}
-        />
-      </View>
-      <WeatherFlatList
-        data={weatherData}
-        keyExtractor={item => item.dt.toString()}
-        horizontal={true}
-        scrollEnabled={false}
-        showsHorizontalScrollIndicator={false}
-        showsVerticalScrollIndicator={false}
-        renderItem={({item}) => <WheaterInfo data={item} />}
-      />
+      <WeatherList dayWeather={weatherData?.dayWeather} />
     </Background>
   );
 }

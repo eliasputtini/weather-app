@@ -36,7 +36,7 @@ const App = () => {
               },
             }}
           />
-          <Stack.Screen name="Task List">
+          <Stack.Screen name="Climas">
             {props => {
               const {navigation, route} = props;
               const {user, projectPartition} = route.params;

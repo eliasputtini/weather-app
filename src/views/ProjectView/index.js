@@ -8,7 +8,7 @@ export function ProjectsView({navigation}) {
   const {projectData} = useAuth();
 
   const onClickProject = async project => {
-    navigation.navigate('Task List', {
+    navigation.navigate('Climas', {
       name: project.name,
       projectPartition: project.partition,
     });
@@ -21,8 +21,8 @@ export function ProjectsView({navigation}) {
           autoPlay
           loop={true}
           speed={1.7}
-          source={require('../../assets/animations/cow.json')}
-          style={{width: 300, height: 140, left: 30, bottom: 30}}
+          source={require('../../assets/animations/load.json')}
+          style={{width: 200, height: 300, bottom: 40}}
         />
         <StyledButton
           onPress={() => onClickProject(projectData)}
