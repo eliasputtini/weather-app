@@ -25,7 +25,6 @@ export function TasksView() {
 
   const searchWeather = () => {
     searchCityWeather(searchText).then(response => {
-      console.log('x');
       let {data} = response;
 
       createTask(
@@ -36,7 +35,6 @@ export function TasksView() {
       );
     });
   };
-
   return (
     <Background>
       <SearchLocationContainer>
@@ -62,26 +60,16 @@ export function TasksView() {
       </SearchLocationContainer>
 
       <CarouselContainer>
-        {tasks.lenght > 1 ? (
-          <Carousel
-            data={tasks}
-            enableSnap={false}
-            layout={'default'}
-            itemWidth={300}
-            renderItem={info => (
-              <CarouselItem key={`${info.item._id}`} cityWeather={info.item} />
-            )}
-            sliderWidth={Dimensions.get('screen').width}
-          />
-        ) : (
-          <LottieView
-            autoPlay
-            loop={true}
-            speed={1.7}
-            source={require('../../assets/animations/load.json')}
-            style={{width: 200, height: 300}}
-          />
-        )}
+        <Carousel
+          data={tasks}
+          enableSnap={false}
+          layout={'default'}
+          itemWidth={300}
+          renderItem={info => (
+            <CarouselItem key={`${info.item._id}`} cityWeather={info.item} />
+          )}
+          sliderWidth={Dimensions.get('screen').width}
+        />
       </CarouselContainer>
     </Background>
   );

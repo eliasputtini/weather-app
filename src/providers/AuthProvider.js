@@ -14,8 +14,6 @@ const AuthProvider = ({children}) => {
       return;
     }
 
-    console.log(user);
-
     const myProject = {partition: `project=${user.id}`};
     setProjectData(myProject);
 

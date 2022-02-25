@@ -21,7 +21,6 @@ export default function WeatherInfo({data}) {
   const formatDateWeatherReceived = () => {
     return moment.unix(data.dt).format('DD/MM/YYYY, HH:mm');
   };
-  console.log(data);
 
   return (
     <Container>

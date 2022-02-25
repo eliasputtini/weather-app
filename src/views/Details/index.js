@@ -13,12 +13,10 @@ export function Details({route}) {
         response2 => {
           const {data} = response2;
           let weatherResponse = {};
-          console.log(data);
 
           weatherResponse['dayWeather'] = data.daily;
           weatherResponse['cityName'] = response.data[0].name;
           setWeatherData(weatherResponse);
-          console.log(weatherResponse);
         },
       );
     });

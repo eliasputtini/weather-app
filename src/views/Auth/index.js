@@ -27,7 +27,6 @@ export function Auth({navigation}) {
   }, [user]);
 
   const onPressSignIn = async () => {
-    console.log('Press sign in');
     try {
       await signIn(email, password);
     } catch (error) {
